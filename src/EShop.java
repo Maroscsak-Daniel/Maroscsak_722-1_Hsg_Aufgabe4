@@ -2,7 +2,7 @@ public class EShop {
 
     public int[] tastatur;
     public int[] usb;
-    public int markusBudget = 30;
+    public int markusBudget = 60;
 
     public EShop(int[] tastatur,  int[] usb) {
         this.tastatur = tastatur;
@@ -39,6 +39,18 @@ public class EShop {
         for (int i=0; i < usb.length; i++) {
             if (usb[i] > max && usb[i] <= markusBudget) {
                 max = usb[i];
+            }
+        }
+        return max;
+    }
+
+    public int maxGeldbetrag() {
+        int max = -1;
+        for (int i = 0; i < tastatur.length; i++) {
+            for (int j=0; j < usb.length; j++) {
+                if (usb[j] + tastatur[i] <= markusBudget ) {
+                    max = usb[j] + tastatur[i];
+                }
             }
         }
         return max;
